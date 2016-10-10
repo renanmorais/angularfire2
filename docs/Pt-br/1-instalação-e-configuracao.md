@@ -10,7 +10,7 @@ Verifique a versão instalada utilizando o comando 'ng -V', verifique a versão 
 Caso contrario você preciza fazer o seguinte: 
 
 ```bash
-# em caso de versão incompativel
+# em caso de versão incompatível
 npm uninstall -g angular-cli
 
 # reinstalar versão limpa
@@ -33,30 +33,30 @@ npm install -g typescript
 ng new <project-name>
 cd <project-name>
 ```
+O Angular-Cli irá configurar um estrutura de projeto na versão mais recente do angular.
 
-The Angular CLI's `new` command will set up the latest Angular build in a new project structure.
-
-### 2. Test your Setup
+### 2. Teste e Configuração
 
 ```bash
 ng serve
-open http://localhost:4200
+abrir http://localhost:4200
 ```
+Você deverá ver uma mensagem *App works!*
 
-You should see a message that says *App works!*
-
-### 3. Install AngularFire 2 and Firebase
+### 3. Instalando AngularFire 2 e Firebase
 
 ```bash
 npm install angularfire2 firebase --save
 ```
 
-Now that you have a new project setup, install AngularFire 2 and Firebase from npm.
+Agora que você já possui um projeto configurado, instale o AngularFire 2 e Firebase atravez do NPM.
 
-### 4. Setup @NgModule
+### 4. Configurando @NgModule
 
-Open `/src/app/app.module.ts`, inject the Firebase providers, and specify your Firebase configuration. 
-This can be found in your project at [the Firebase Console](https://console.firebase.google.com):
+
+Abra o arquivo `/ src / app / app.module.ts`, importe os providers do Firebase e especifique qual sua configuração do Firebase.
+Podemos encontrar essas informações no [console do Firebase] na Web (https://console.firebase.google.com)
+
 
 ```ts
 import { BrowserModule } from '@angular/platform-browser';
@@ -64,7 +64,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { AngularFireModule } from 'angularfire2';
 
-// Must export the config
+// Deve exportar a configuração
 export const firebaseConfig = {
   apiKey: '<your-key>',
   authDomain: '<your-project-authdomain>',
@@ -84,9 +84,10 @@ export class AppModule {}
 
 ```
 
-### 5. Inject AngularFire
+### 5. Injete AngularFire
 
-Open `/src/app/app.component.ts`, and make sure to modify/delete any tests to get the sample working (tests are still important, you know):
+Abra o arquivo `/src/app/app.component.ts`, para tudo funcionar corretamente modifique/exclua os arquivos de testes (Testes são importantes, você sabe disso.)
+
 
 ```ts
 import { Component } from '@angular/core';
@@ -106,9 +107,9 @@ export class <MyApp>Component {
 
 ```
 
-### 6. Bind to a list
+### 6. Bind da lista
 
-In `/src/app/app.component.ts`:
+No arquivo `/src/app/app.component.ts`:
 
 ```ts
 import { Component } from '@angular/core';
@@ -128,7 +129,7 @@ export class AppComponent {
 }
 ```
 
-Open `/src/app/app.component.html`:
+Abra o arquivo `/src/app/app.component.html`:
 
 ```html
 <ul>
@@ -138,23 +139,24 @@ Open `/src/app/app.component.html`:
 </ul>
 ```
 
-### 7. Run your app
+### 7. Rodando seu app
 
 ```bash
 ng serve
 ```
+Execute o comando para iniciar o servidor e navegue até `localhost: 4200` em seu navegador.
 
-Run the serve command and go to `localhost:4200` in your browser.
+E é isso! Qualquer problema que encontrar registre uma issue para nos avisar.
 
-And that's it! If it's totally *borked*, file an issue and let us know.
+###[Próximo passo: recuperação de dados como objeto](2-recuperacao-de-dados-como-objeto.md)
 
-###[Next Step: Retrieving data as objects](2-retrieving-data-as-objects.md)
+### Solução de problemas
 
-### Troubleshooting
+#### 1. Não é possível encontrar o namespace 'firebase'.
 
-#### 1. Cannot find namespace 'firebase'.
+Menssagem no console: Cannot find namespace 'firebase'.
 
-If you run into this error while trying to invoke `ng serve`, open `src/tsconfig.json` and add the "types" array as follows:
+Se você tiver esse erro ao rodar o comando `ng serve`, abra o arquivo `src/tsconfig.json` e adicione  "firebase" no array "types", observe o exemplo abaixo:
 
 ```json
 {
@@ -171,10 +173,13 @@ If you run into this error while trying to invoke `ng serve`, open `src/tsconfig
   }
 }
 ```
+#### 2. Não é possível encontrar o nome de 'require' (Isto é apenas uma solução temporária para o Angular CLI).
 
-#### 2. Cannot find name 'require' (This is just a temporary workaround for the Angular CLI).
+Menssagem no console: Cannot find name 'require'.
 
 If you run into this error while trying to invoke `ng serve`, open `src/typings.d.ts` and add the following two entries as follows:
+
+Se você tiver esse erro ao rodar o comando `ng serve`, abra o arquivo `src/typings.d.ts` e adicione as seguintes declarações:
 
 ```bash
 declare var require: any;
