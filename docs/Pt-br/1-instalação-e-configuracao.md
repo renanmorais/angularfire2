@@ -166,7 +166,7 @@ Se você tiver esse erro ao rodar o comando `ng serve`, abra o arquivo `src/tsco
       "../node_modules/@types"
     ],
     
-    // ADD THIS
+    // ADICIONE ISTO
     "types": [
       "firebase"
     ]
