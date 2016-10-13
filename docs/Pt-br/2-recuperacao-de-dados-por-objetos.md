@@ -168,17 +168,19 @@ export class AppComponent {
 }
 ```
 
-## Meta-fields no objeto
-Data retrieved from the object binding contains special properties retrieved from the unwrapped Firebase DataSnapshot.
+## Meta-fields do objeto
 
-| property |                    | 
+Os dados recuperados do binding com o objeto possui propriedades especias do Firebase DataSnapshot.
+
+| Proriedade |                    | 
 | ---------|--------------------| 
-| $key     | The key for each record. This is equivalent to each record's path in our database as it would be returned by `ref.key()`.|
-| $value   | If the data for this child node is a primitive (number, string, or boolean), then the record itself will still be an object. The primitive value will be stored under `$value` and can be changed and saved like any other field.|
+| $key     | A chave de cada registro. É o caminho de registro no nosso banco de dados, seria o mesmo que o retorno do método `ref.key()`.|
+| $value   | Se os dados armazenados nesse né filho é um primitivo (number, string ou boolean), ainda sim o registro será um objeto. O valor primitivo serão armazenados em $value e pode ser alterado e salvo como qualquer outro campo.|
 
 
-## Retrieving the snapshot
-AngularFire2 unwraps the Firebase DataSnapshot by default, but you can get the data as the original snapshot by specifying the `preserveSnapshot` option. 
+## Recuperando o snapshot
+
+AngularFire2 empacota o Firebase DataSnapshot por padrão, mas você pode obter os dados como o snapshot original, especificando a opção `preservar Snapshot`.
 
 ```ts
 this.item = af.database.object('/item', { preserveSnapshot: true });
@@ -188,10 +190,11 @@ this.item.subscribe(snapshot => {
 });
 ```
 
-## Querying?
+## Consultas (Query)?
 
-Because `FirebaseObjectObservable` synchronizes objects from the realtime database, sorting will have no effect for queries that are not also limited by a range. For example, when paginating you would provide a query with a sort and filter. Both the sort operation and the filter operation affect which subset of the data is returned by the query; however, because the resulting object is simply json, the sort order will not be preseved locally. Hence, for operations that require sorting, you are probably looking for a [list](3-retrieving-data-as-lists.md)
+Devido ao `FirebaseObjectObservable` sincronizar objetos do banco de dados em tempo real, não é possivel realizar uma classificação por . Por exemplo quando nescessita de filtrar e classificar um objeto, afeta o retorno da consulta, no entando o objeto do retorno é um Json, assim a ordem de retorno não será obedecida. Porem para realizar operações que exige ordenação, provavelmente você precisa de uma lista. (3-recuperando-dados-por-lista.md)
 
-For filtering response data see [](4-querying-lists.md) and repeat 'Object' to yourself everytime you read the word 'List'. 
+Para filtrar dados veja o topico (4-consultando-listas.md). 
 
-###[Next Step: Retrieving data as lists](3-retrieving-data-as-lists.md)
+
+###[Proximo tópico: recuperando-dados-por-lista](3-recuperando-dados-por-lista.md)
